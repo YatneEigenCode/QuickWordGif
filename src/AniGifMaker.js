@@ -1,3 +1,5 @@
+//This class was designed to work in the CETB environment. Modify it to work as standalone.
+
 //12-18-2017 v0.114 successful test on windows
 AniGifMaker=function(){
   this.start= function(){
