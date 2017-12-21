@@ -1,27 +1,28 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-18-2017 v0.114 successful test on windows
+//12-20-2017 v0.121 remove CETB calls
 AniGifMaker=function(){
-  this.start= function(){
-    const ag = new Animated_GIF({repeat:null}), dim={w:320,h:240}
+  this.dim= {w:320, h:160, d:1, sep:'\n'}  //d in seconds
+  this.setDim(k,v){ this.dim[k]=v }
+  this.start= function(s){
+    const D= document;
+    const ag = new Animated_GIF(), dim=this.dim;
     ag.setSize(dim.w, dim.h);
-    ag.setDelay(0.2);
-    const apt= new LinkMaker(), ian = apt.addEl('img');
-    apt.wrapCloser( ian, true, 'Animated GIF' );
+    ag.setDelay(dim.d);
+    const ian = D.body.appendChild(D.createElement('img'));
 
-    const cnv= document.createElement('canvas');
+    const cnv= D.createElement('canvas');
     cnv.width= dim.w; cnv.height= dim.h;
     const ctx= cnv.getContext('2d');
     ctx.fillStyle= 'yellow';
-    for(var i = 0; i < 1501; i=i+10) {
+    ctx.textAlign= 'center';
+    s.split(dim.sep).map( function(x){
       ctx.clearRect(0, 0, dim.w, dim.h);
-      ctx.fillText(i, i % dim.w, i % dim.h);
+      ctx.fillText(x, dim.w/2, dim.h/2);      
       const img= new Image();
-      ian.src= img.src= cnv.toDataURL('image/jpeg');
-      console.log( 'c', i, img.src.length );
+      img.src= cnv.toDataURL('image/jpeg');
       ag.addFrame(img);
-    }
-    ag.getBase64GIF(function(image){ ian.src = image; console.log(image.length) });
-    return 'ok';
+    });
+    ag.getBase64GIF(function(image){ ian.src = image; });
   }
 }
