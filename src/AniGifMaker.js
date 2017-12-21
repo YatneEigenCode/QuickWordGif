@@ -3,7 +3,7 @@
 //12-20-2017 v0.121 remove CETB calls
 AniGifMaker=function(){
   this.dim= {w:320, h:160, d:1, sep:'\n'}  //d in seconds
-  this.setDim(k,v){ this.dim[k]=v }
+  this.setDim= function(k,v){ this.dim[k]=v }
   this.start= function(s){
     const D= document;
     const ag = new Animated_GIF(), dim=this.dim;
