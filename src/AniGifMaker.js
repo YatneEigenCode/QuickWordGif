@@ -1,6 +1,6 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-20-2017 v0.123 delay=10
+//12-20-2017 v0.124 debugging setDelay
 AniGifMaker=function(){
   this.dim= {w:320, h:160, d:10, sep:'\n'}  //d in seconds
   this.setDim= function(k,v){ this.dim[k]=v }
@@ -8,7 +8,7 @@ AniGifMaker=function(){
     const D= document;
     const ag = new Animated_GIF(), dim=this.dim;
     ag.setSize(dim.w, dim.h);
-    ag.setDelay(dim.d);
+    ag.setDelay(10) //dim.d);
     const ian = D.body.appendChild(D.createElement('img'));
 
     const cnv= D.createElement('canvas');
