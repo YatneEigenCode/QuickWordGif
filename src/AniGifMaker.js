@@ -1,6 +1,6 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.131 font
+//12-23-2017 v0.132 canvasWk
 AniGifMaker=function(){
   this.dim= {w:320, h:160, d:150, sep:'\n'}  //d in seconds
   this.setDim= function(k,v){ this.dim[k]=v }
@@ -18,12 +18,12 @@ AniGifMaker=function(){
     ctx.textAlign= 'center';
     ctx.font= "24px Arial";
     s.split(dim.sep).map( function(x){
-      ag.addFrame(this.canvasJob(ctx,x));
+      ag.addFrame(this.canvasWk(ctx,x));
       ag.setDelay(dim.d);
     });
     ag.getBase64GIF(function(image){ ian.src = image; });
   }
-  this.canvasWork( ctx, x ){
+  this.canvasWk= function( ctx, x ){
       ctx.clearRect(0, 0, dim.w, dim.h);
       ctx.fillText(x, dim.w/2, dim.h/2);      
       const img= new Image();
