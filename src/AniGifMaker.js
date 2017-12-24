@@ -1,9 +1,9 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.137 prepCanvas
+//12-23-2017 v0.138 #EEEEDD
 AniGifMaker=function(){
   this.dim= {w:300, h:120, d:1200, sep:'\n'}  //d in seconds
-  this.dim.colors= ['blue','black','red','white'];
+  this.dim.colors= ['blue','black','red','#EEEEDD'];
   this.setDim= function(k,v){ this.dim[k]=v }
   const $t= this;
   this.start= function(s){
