@@ -1,8 +1,8 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.141 debug color issue
+//12-23-2017 v0.142 text colors
 AniGifMaker=function(){
-  this.dim= {w:300, h:120, d:1200, sep:'\n'}  //d in seconds
+  this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
   this.setDim= function(k,v){ this.dim[k]=v }
   const $t= this;
@@ -24,17 +24,15 @@ AniGifMaker=function(){
     const ctx= cnv.getContext('2d');
     ctx.fillStyle= 'yellow';
     ctx.textAlign= 'center';
-    ctx.font= "24px Arial";
+    ctx.font= "2px Arial";
     return ctx;
   }
   this.canvasWk= function( ctx, x, i){
       const n= $t.dim.colors.length-1;
       ctx.clearRect(0, 0, $t.dim.w, $t.dim.h);
-      ctx.fillStyle= "#DDEEEE";
-      ctx.fillRect(0, 0, $t.dim.w, $t.dim.h);
       ctx.fillStyle= $t.dim.colors[n];
-      ctx.fillRect(0, 0, 10, 10);
-      ctx.fillStyle= 'yellow';
+      ctx.fillRect(0, 0, $t.dim.w, $t.dim.h);
+      ctx.fillStyle= $t.dim.colors[i % n];
       ctx.fillText(x, $t.dim.w/2, $t.dim.h/2); 
       const img= new Image();
       return [img,img.src= ctx.canvas.toDataURL('image/png')][0];
