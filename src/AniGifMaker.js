@@ -1,6 +1,6 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.135 this.dim
+//12-23-2017 v0.136 ctx.canvas
 AniGifMaker=function(){
   this.dim= {w:320, h:160, d:150, sep:'\n'}  //d in seconds
   this.setDim= function(k,v){ this.dim[k]=v }
@@ -28,6 +28,6 @@ AniGifMaker=function(){
       ctx.clearRect(0, 0, this.dim.w, this.dim.h);
       ctx.fillText(x, this.dim.w/2, this.dim.h/2);      
       const img= new Image();
-      return [img,img.src= cnv.toDataURL('image/jpeg')][0];
+      return [img,img.src= ctx.canvas.toDataURL('image/png')][0];
   }
 }
