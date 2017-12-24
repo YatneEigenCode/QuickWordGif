@@ -1,6 +1,6 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.139 debug color issue
+//12-23-2017 v0.141 debug color issue
 AniGifMaker=function(){
   this.dim= {w:300, h:120, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -13,14 +13,13 @@ AniGifMaker=function(){
     ag.setDelay(dim.d);
     const ian = D.body.appendChild(D.createElement('img'));
 
-    const ctx= $t.prepCanvas();
+    const ctx= $t.prepCanvas(D.createElement('canvas'));
     s.split(dim.sep).map( function(x,i){
       ag.addFrame($t.canvasWk(ctx,x,i));
     });
     ag.getBase64GIF(function(image){ ian.src = image; });
   }
-  this.prepCanvas= function(){
-    const cnv= D.createElement('canvas');
+  this.prepCanvas= function(cnv){
     cnv.width= $t.dim.w; cnv.height= $t.dim.h;
     const ctx= cnv.getContext('2d');
     ctx.fillStyle= 'yellow';
