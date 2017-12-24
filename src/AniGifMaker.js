@@ -1,6 +1,6 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.142 text colors
+//12-23-2017 v0.143 24px
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -24,7 +24,7 @@ AniGifMaker=function(){
     const ctx= cnv.getContext('2d');
     ctx.fillStyle= 'yellow';
     ctx.textAlign= 'center';
-    ctx.font= "2px Arial";
+    ctx.font= "24px Arial";
     return ctx;
   }
   this.canvasWk= function( ctx, x, i){
