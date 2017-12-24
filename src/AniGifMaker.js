@@ -1,6 +1,6 @@
 //This class was designed to work in the CETB environment. Modify it to work as standalone.
 
-//12-23-2017 v0.138 #EEEEDD
+//12-23-2017 v0.139 debug color issue
 AniGifMaker=function(){
   this.dim= {w:300, h:120, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -31,9 +31,11 @@ AniGifMaker=function(){
   this.canvasWk= function( ctx, x, i){
       const n= $t.dim.colors.length-1;
       ctx.clearRect(0, 0, $t.dim.w, $t.dim.h);
-      ctx.fillStyle= $t.dim.colors[n];
+      ctx.fillStyle= "#DDEEEE";
       ctx.fillRect(0, 0, $t.dim.w, $t.dim.h);
-      ctx.fillStyle= $t.dim.colors[i % n];
+      ctx.fillStyle= $t.dim.colors[n];
+      ctx.fillRect(0, 0, 10, 10);
+      ctx.fillStyle= 'yellow';
       ctx.fillText(x, $t.dim.w/2, $t.dim.h/2); 
       const img= new Image();
       return [img,img.src= ctx.canvas.toDataURL('image/png')][0];
