@@ -1,6 +1,4 @@
-//This class was designed to work in the CETB environment. Modify it to work as standalone.
-
-//12-23-2017 v0.143 24px
+//12-26-2017 v0.151 dotCommand
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -15,7 +13,8 @@ AniGifMaker=function(){
 
     const ctx= $t.prepCanvas(D.createElement('canvas'));
     s.split(dim.sep).map( function(x,i){
-      ag.addFrame($t.canvasWk(ctx,x,i));
+      if (!$t.dotCommand(ctx,x,i))
+        ag.addFrame($t.canvasWk(ctx,x,i));
     });
     ag.getBase64GIF(function(image){ ian.src = image; });
   }
@@ -26,6 +25,17 @@ AniGifMaker=function(){
     ctx.textAlign= 'center';
     ctx.font= "24px Arial";
     return ctx;
+  }
+  this.dotCommand= function( ctx, x, i){
+    var num;
+    if (x.indexOf('.') != 0) return false;
+    var at= x.split(' ');
+    if (at[0]=='.font') ctx.font= at.slice(1).join(' ');
+    if (at[0]=='.colors') this.dim.colors= at.slice(1);
+    if (at[0]=='.delay')
+      if (!isNaN(num=parseInt(at[1])))
+        $t.dim.d=num;
+    return true;
   }
   this.canvasWk= function( ctx, x, i){
       const n= $t.dim.colors.length-1;
