@@ -1,4 +1,4 @@
-//12-26-2017 v0.151 dotCommand
+//12-26-2017 v0.152 dot delay
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -15,6 +15,7 @@ AniGifMaker=function(){
     s.split(dim.sep).map( function(x,i){
       if (!$t.dotCommand(ctx,x,i))
         ag.addFrame($t.canvasWk(ctx,x,i));
+      ag.setDelay($t.dim.d);
     });
     ag.getBase64GIF(function(image){ ian.src = image; });
   }
@@ -39,12 +40,11 @@ AniGifMaker=function(){
   }
   this.canvasWk= function( ctx, x, i){
       const n= $t.dim.colors.length-1;
-      ctx.clearRect(0, 0, $t.dim.w, $t.dim.h);
       ctx.fillStyle= $t.dim.colors[n];
       ctx.fillRect(0, 0, $t.dim.w, $t.dim.h);
       ctx.fillStyle= $t.dim.colors[i % n];
       ctx.fillText(x, $t.dim.w/2, $t.dim.h/2); 
       const img= new Image();
-      return [img,img.src= ctx.canvas.toDataURL('image/png')][0];
+      return [img,img.src= ctx.canvas.toDataURL( 'image/png' )][0];
   }
 }
