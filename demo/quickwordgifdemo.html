@@ -3,7 +3,7 @@
 <title>Quick Word Gif</title>
 <div>
 Enter the text you want in the animated gif.
-(r141)
+(r142)
 <br>
   <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
 <form>
@@ -14,14 +14,20 @@ Enter the text you want in the animated gif.
   github.com/YatneEigenCode/QuickWordGif</textarea>
   <br>
   <input type=button value=Run 
-         onclick="this.form.doClick()">
+         onclick="this.form.doRun()">
+  <input type=button value=Remove
+         onclick="this.form.doRemove()">
 </form>
 <script>
-document.forms[0].doClick= function(){
+document.forms[0].doRun= function(){
   const ag= new AniGifMaker();
   ag.setDim('d',1500); 
   ag.setDim('colors',['blue','#772222', '#222222','red','#222277','#EEDDEE'] );
   ag.start(this.ta1.value)
+}
+document.forms[0].doRemove= function(){
+  var iz= document.images.slice(-1);
+  iz.parentNode.removeChild(el);
 }
 </script>
 </div>
