@@ -2,7 +2,7 @@
 <script src="../src/AniGifMaker.js"></script>
 <title>Quick Word Gif</title>
 <div>
-(r146)<br>
+(r147)<br>
 Enter the text you want to be in the animated gif.
 <br>
   <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
@@ -55,9 +55,10 @@ doClick= function(){
   if (this.value=='Run')this.form.doRun()
 }
 
-(function(frm){
+init=function(frm){
   for(var i=0,i<frm.elements.length;i++)
     frm.elements[i].onclick=doClick;
-})(documents.forms[0])
+}
+init(documents.forms[0]);
 </script>
 </div>
