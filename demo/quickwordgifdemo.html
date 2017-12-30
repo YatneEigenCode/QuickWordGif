@@ -2,7 +2,7 @@
 <script src="../src/AniGifMaker.js"></script>
 <title>Quick Word Gif</title>
 <div>
-(r147)<br>
+(r148)<br>
 Enter the text you want to be in the animated gif.
 <br>
   <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
@@ -30,6 +30,7 @@ document.forms[0].doRemove= function(){
   var ii, at= document.images;
   (ii=at[at.length-1] ).parentNode.removeChild(ii);
 }
+
 doHelp= function(){
   const hlpscr='.colors blue red purple brown black #ffffdd\n'+
 'Helpful hints\n'+
@@ -42,9 +43,9 @@ doHelp= function(){
 'sets text colors except\n'+
 'the last color is the background color'+
 '\n.font 21px sans-serif\n'+
-'QuickWordGif';
+' QuickWordGif';
   const ag= new AniGifMaker();
-  ag.setDim('d',1500); 
+  ag.setDim('d',1500);
   ag.setDim('colors',['blue','#772222', '#222222','red','#222277','#EEDDEE'] );
   ag.start(hlpscr);
 }
@@ -57,8 +58,9 @@ doClick= function(){
 
 init=function(frm){
   for(var i=0,i<frm.elements.length;i++)
-    frm.elements[i].onclick=doClick;
+    if frm.elements[i].value='Help';
+      frm.elements[i].onclick=doClick;
 }
-init(documents.forms[0]);
+//init(documents.forms[0]);
 </script>
 </div>
