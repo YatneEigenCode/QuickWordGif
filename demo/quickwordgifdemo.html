@@ -2,8 +2,8 @@
 <script src="../src/AniGifMaker.js"></script>
 <title>Quick Word Gif</title>
 <div>
-Enter the text you want in the animated gif.
-(r143)
+(r145)
+Enter the text you want to be in the animated gif.
 <br>
   <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
 <form>
@@ -17,6 +17,7 @@ Enter the text you want in the animated gif.
          onclick="this.form.doRun()">
   <input type=button value=Remove
          onclick="this.form.doRemove()">
+ <input type=button value=Help>
 </form>
 <script>
 document.forms[0].doRun= function(){
@@ -27,7 +28,35 @@ document.forms[0].doRun= function(){
 }
 document.forms[0].doRemove= function(){
   var ii, at= document.images;
-  (ii=at[at.length-1]).parentNode.removeChild(ii);
+  (ii=at[at.length-1] ).parentNode.removeChild(ii);
 }
+doHelp= function(){
+  const hlpscr='.colors blue red purple brown black #ffffdd\n'+
+'Helpful hints\n'+
+' .delay 1200\n'+
+'sets delay to 1200 milliseconds\n'+
+'.font 16px sans-serif-condensed\n'+
+' .font 16px sans-serif-condensed\n'+
+'sets font size and family\n'+
+' .colors c1 c2 c3 ...\n'+
+'sets text colors except\n'+
+'the last color is the background color'+
+'\n.font 21px sans-serif\n'+
+'QuickWordGif';
+  const ag= new AniGifMaker();
+  ag.setDim('d',1500); 
+  ag.setDim('colors',['blue','#772222', '#222222','red','#222277','#EEDDEE'] );
+  ag.start(hlpscr);
+}
+  
+doClick= function(){
+  if (this.value=='Help') doHelp(this);
+}
+
+(function(frm){
+  for(var i=0,i<frm.elements.length;i++)
+    if (!frm.elements[i].onclick)
+      frm.elements[i].onclick=doClick;
+})(documents.forms[0])
 </script>
 </div>
