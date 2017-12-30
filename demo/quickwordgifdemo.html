@@ -2,10 +2,10 @@
 <script src="../src/AniGifMaker.js"></script>
 <title>Quick Word Gif</title>
 <div>
-(r151)<br>
-Enter the text you want to be in the animated gif.
+<img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
 <br>
-  <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
+(r152)<br>
+Enter the text you want to be in the animated gif.
 <form>
   <textarea rows=9 cols=44 name=ta1>This animated gif
   file was generated
@@ -13,11 +13,10 @@ Enter the text you want to be in the animated gif.
   of QuickWordGif project
   github.com/YatneEigenCode/QuickWordGif</textarea>
   <br>
-  <input type=button value=Run 
-         onclick="this.form.doRun()">
-  <input type=button value=Remove
+  <input type=button value=' Create'>
+  <input type=button value=Destroy
          onclick="this.form.doRemove()">
-  <input type=button value=Help>
+  <input type=button value=' Sample'>
 </form>
 <script>
 document.forms[0].doRun= function(){
@@ -51,17 +50,17 @@ doHelp= function(){
 }
   
 doClick= function(){
-  document.title=this.value+'*';
-  if (this.value=='Help') doHelp(this);
-  if (this.value=='Run')this.form.doRun()
+  const bv=this.value.replace(' ','');
+  if (bv=='Sample') doHelp(this);
+  if (bv=='Create') this.form.doRun()
 }
 
-init=function(frm){
-  for(var i=0;i<frm.elements.length;i++)
-    if (frm.elements[i].value=='Help')
-      frm.elements[i].onclick=doClick;
+init=function(at){
+  for(var i=0;i<at.length;i++)
+    if (at[i].value.indexOf(' ')==0)
+      at[i].onclick=doClick;
 }
-init(document.forms[0]);
+init(document.forms[0].elements);
 
 </script>
 </div>
