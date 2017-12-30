@@ -4,7 +4,7 @@
 <div>
 <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
 <br>
-(r154)<br>
+(r156)<br>
 Enter the text you want to be in the animated gif.
 <form>
   <textarea rows=9 cols=44 name=ta1>This animated gif
@@ -14,8 +14,7 @@ Enter the text you want to be in the animated gif.
   github.com/YatneEigenCode/QuickWordGif</textarea>
   <br>
   <input type=button value=' Create'>
-  <input type=button value=Destroy
-         onclick="this.form.doRemove()">
+  <input type=button value=' Destroy'>
   <input type=button value=' Sample'>
 </form>
 <div id='hlpscr' style='display:none'>..
@@ -68,14 +67,16 @@ doHelp= function(){
 doClick= function(){
   const bv=this.value.replace(' ','');
   if (bv=='Sample') doHelp(this);
-  if (bv=='Create') this.form.doRun()
+  if (bv=='Create') this.form.doRun();
+  if (bv=='Destroy') this.form.doRemove()
 }
 
-(function(at){
+init=function(at){
   for(var i=0;i<at.length;i++)
     if (at[i].value.indexOf(' ')==0)
       at[i].onclick=doClick;
-})(document.forms[0].elements);
+}
+init(document.forms[0].elements);
 
 </script>
 </div>
