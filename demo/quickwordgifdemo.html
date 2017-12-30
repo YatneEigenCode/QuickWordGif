@@ -4,7 +4,7 @@
 <div>
 <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
 <br>
-(r153)<br>
+(r154)<br>
 Enter the text you want to be in the animated gif.
 <form>
   <textarea rows=9 cols=44 name=ta1>This animated gif
@@ -19,6 +19,7 @@ Enter the text you want to be in the animated gif.
   <input type=button value=' Sample'>
 </form>
 <div id='hlpscr' style='display:none'>..
+.this doesn't work
 .colors blue red purple brown black #ffffdd
 Helpful Hints
  .delay 1200
@@ -60,8 +61,8 @@ doHelp= function(){
   const ag= new AniGifMaker(),s='hlpscr';
   ag.setDim('d',1500);
   ag.setDim('colors',['blue','#772222', '#222222','red','#222277','#EEDDEE'] );
-  s=document.getElementById(s).innerHTML;
-  ag.start(s);
+//s=document.getElementById(s).innerHTML;
+  ag.start(hlpscr);
 }
   
 doClick= function(){
@@ -70,12 +71,11 @@ doClick= function(){
   if (bv=='Create') this.form.doRun()
 }
 
-init=function(at){
+(function(at){
   for(var i=0;i<at.length;i++)
     if (at[i].value.indexOf(' ')==0)
       at[i].onclick=doClick;
-}
-init(document.forms[0].elements);
+})(document.forms[0].elements);
 
 </script>
 </div>
