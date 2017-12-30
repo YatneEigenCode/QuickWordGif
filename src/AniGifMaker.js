@@ -1,4 +1,4 @@
-//12-30-2017 v0.153 ag.destroy()
+//12-30-2017 v0.154 destroy in callback
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -17,8 +17,10 @@ AniGifMaker=function(){
         ag.addFrame($t.canvasWk(ctx,x,i));
       ag.setDelay($t.dim.d);
     });
-    ag.getBase64GIF(function(image){ ian.src = image; });
-    ag.destroy();
+    ag.getBase64GIF(function(image){
+      ian.src = image;
+      ag.destroy();
+    });
   }
   this.prepCanvas= function(cnv){
     cnv.width= $t.dim.w; cnv.height= $t.dim.h;
