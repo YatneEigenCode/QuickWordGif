@@ -4,7 +4,7 @@
 <div>
 <img src="https://yatneeigencode.github.io/QuickWordGif/demo/demo.gif">
 <br>
-(r152)<br>
+(r153)<br>
 Enter the text you want to be in the animated gif.
 <form>
   <textarea rows=9 cols=44 name=ta1>This animated gif
@@ -18,6 +18,20 @@ Enter the text you want to be in the animated gif.
          onclick="this.form.doRemove()">
   <input type=button value=' Sample'>
 </form>
+<div id='hlpscr' style='display:none'>..
+.colors blue red purple brown black #ffffdd
+Helpful Hints
+ .delay 1200
+sets delay to 1200 milliseconds
+.font 16px sans-serif-condensed
+ .font 16px sans-serif-condensed
+sets font size and family
+ .colors c1 c2 c3 ...
+sets text colors except
+the last color is the background color
+.font 21px sans-serif
+QuickWordGif
+</div>
 <script>
 document.forms[0].doRun= function(){
   const ag= new AniGifMaker();
@@ -43,10 +57,11 @@ doHelp= function(){
 'the last color is the background color'+
 '\n.font 21px sans-serif\n'+
 ' QuickWordGif';
-  const ag= new AniGifMaker();
+  const ag= new AniGifMaker(),s='hlpscr';
   ag.setDim('d',1500);
   ag.setDim('colors',['blue','#772222', '#222222','red','#222277','#EEDDEE'] );
-  ag.start(hlpscr);
+  s=document.getElementById(s).innerHTML;
+  ag.start(s);
 }
   
 doClick= function(){
