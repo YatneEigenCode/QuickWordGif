@@ -1,4 +1,4 @@
-//12-31-2017 v0.158 requestAnimationFrame
+//12-31-2017 v0.159 spin early
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -14,17 +14,18 @@ AniGifMaker=function(){
 
     const ctx= $t.prepCanvas(
       D.createElement('canvas'));
+    ian.istepa=1;
+    requestAnimationFrame( function(){
+      if (ian.istepa<1) return;
+      ian.src= this.mkSpinnerImg(ctx).src;
+    })
+
     s.split(dim.sep).map( function(x,i){
       if (!$t.dotCommand(ctx,x,i))
         ag.addFrame($t.canvasWk(
           ctx,x,i));
       ag.setDelay($t.dim.d);
     });
-    ian.istepa=1;
-    requestAnimationFrame( function(){
-      if (ian.istepa<1) return;
-      ian.src= this.mkSpinnerImg(ctx).src;
-    })
     ag.getBase64GIF(function(image){
       ian.istepa=-1;
       ian.src = image;
