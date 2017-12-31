@@ -1,4 +1,4 @@
-//12-30-2017 v0.156 mkSpinnerImg
+//12-31-2017 v0.157 mkSpinnerImg(ctx)
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -20,7 +20,7 @@ AniGifMaker=function(){
           ctx,x,i));
       ag.setDelay($t.dim.d);
     });
-    ian.src= this.mkSpinnerImg().src;
+    ian.src= this.mkSpinnerImg(ctx).src;
     ag.getBase64GIF(function(image){
       ian.src = image;
       ag.destroy();
