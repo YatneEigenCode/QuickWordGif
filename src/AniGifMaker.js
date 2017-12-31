@@ -1,4 +1,4 @@
-//12-31-2017 v0.157 mkSpinnerImg(ctx)
+//12-31-2017 v0.158 requestAnimationFrame
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -20,8 +20,13 @@ AniGifMaker=function(){
           ctx,x,i));
       ag.setDelay($t.dim.d);
     });
-    ian.src= this.mkSpinnerImg(ctx).src;
+    ian.istepa=1;
+    requestAnimationFrame( function(){
+      if (ian.istepa<1) return;
+      ian.src= this.mkSpinnerImg(ctx).src;
+    })
     ag.getBase64GIF(function(image){
+      ian.istepa=-1;
       ian.src = image;
       ag.destroy();
     });
