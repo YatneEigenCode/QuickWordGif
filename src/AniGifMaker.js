@@ -1,4 +1,4 @@
-//12-31-2017 v0.162 istepa++
+//12-31-2017 v0.163 console log rfa
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -16,6 +16,7 @@ AniGifMaker=function(){
       D.createElement('canvas'));
     ian.istepa=1;
     requestAnimationFrame( function(){
+      console.log('rfa',ian.istepa);
       if (ian.istepa<1) return;
       ian.src= $t.mkSpinnerImg(ctx, ian.istepa++).src;
     })
@@ -54,7 +55,7 @@ AniGifMaker=function(){
   this.mkSpinnerImg=function(ctx,i){
     const num = Math.floor(i/10);
     return this.canvasWk(ctx,
-      'Working...'+num,0);
+      'Working.+..'+num,0);
   }
   this.canvasWk= function( ctx, x, i){
       const n= $t.dim.colors.length-1;
