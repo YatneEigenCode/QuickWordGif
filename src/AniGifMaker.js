@@ -1,4 +1,4 @@
-//12-31-2017 v0.163 console log rfa
+//12-31-2017 v0.164 showSpinner
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -14,12 +14,15 @@ AniGifMaker=function(){
 
     const ctx= $t.prepCanvas(
       D.createElement('canvas'));
-    ian.istepa=1;
+    ian.itick=1;
     requestAnimationFrame( function(){
-      console.log('rfa',ian.istepa);
-      if (ian.istepa<1) return;
-      ian.src= $t.mkSpinnerImg(ctx, ian.istepa++).src;
-    })
+    const showSpinner=function(){
+      console.log('rfa', ian.itick );
+      if ( ian.itick <1) return;
+      ian.src= $t.mkSpinnerImg(
+        ctx, ian.itick++).src;
+      requestAnimationFrame(showSpinner);
+    }
 
     s.split(dim.sep).map( function(x,i){
       if (!$t.dotCommand(ctx,x,i))
