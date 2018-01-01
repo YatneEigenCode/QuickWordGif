@@ -1,4 +1,4 @@
-//12-31-2017 v0.164 showSpinner
+//12-31-2017 v0.165 remove typo
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -15,7 +15,6 @@ AniGifMaker=function(){
     const ctx= $t.prepCanvas(
       D.createElement('canvas'));
     ian.itick=1;
-    requestAnimationFrame( function(){
     const showSpinner=function(){
       console.log('rfa', ian.itick );
       if ( ian.itick <1) return;
