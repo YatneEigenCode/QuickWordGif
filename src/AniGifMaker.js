@@ -1,4 +1,4 @@
-//12-31-2017 v0.161 $t.mkSpinnerImg num
+//12-31-2017 v0.162 istepa++
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -17,7 +17,7 @@ AniGifMaker=function(){
     ian.istepa=1;
     requestAnimationFrame( function(){
       if (ian.istepa<1) return;
-      ian.src= $t.mkSpinnerImg(ctx, ian.istepa).src;
+      ian.src= $t.mkSpinnerImg(ctx, ian.istepa++).src;
     })
 
     s.split(dim.sep).map( function(x,i){
@@ -52,7 +52,7 @@ AniGifMaker=function(){
     return true;
   }
   this.mkSpinnerImg=function(ctx,i){
-    const num = Math.floor(i/100);
+    const num = Math.floor(i/10);
     return this.canvasWk(ctx,
       'Working...'+num,0);
   }
