@@ -1,4 +1,4 @@
-//12-31-2017 v0.167 showSpinner()
+//12-31-2017 v0.168 itick=-1
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -31,7 +31,7 @@ AniGifMaker=function(){
       ag.setDelay($t.dim.d);
     });
     ag.getBase64GIF(function(image){
-      ian.istepa=-1;
+      ian.itick=-1;
       ian.src = image;
       ag.destroy();
     });
