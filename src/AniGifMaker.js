@@ -1,4 +1,4 @@
-//1-1-2018 v0.212 fill arc twice
+//1-1-2018 v0.213 closePath
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -59,11 +59,13 @@ AniGifMaker=function(){
       const w2= $t.dim.w/2, h2= $t.dim.h/2;
       const ith= i*Math.PI/300, img=new Image();
       ctx.fillStyle= 'white';
-      ctx.beginPath();
-      ctx.arc( w2, h2, 0, ith, ith+Math.PI/2);
-      ctx.fill();
-      ctx.arc( w2, h2, 0, ith+Math.PI, ith+Math.PI * 3/2);
-      ctx.fill();
+      [0, Math.PI].map( function(x) {
+        ctx.beginPath();
+        ctx.moveTo( w2, h2 );
+        ctx.arc( w2, h2, 0, x+ith, x + ith+Math.PI/2);
+        ctx.closePath()
+        ctx.fill();
+      });
       return [img,img.src= ctx.canvas.toDataURL( 'image/png' )][0];
   }
   this.canvasWk= function( ctx, x, i){
