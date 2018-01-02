@@ -1,4 +1,4 @@
-//12-31-2017 v0.168 itick=-1
+//1-1-2018 v0.211 fill arc
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -56,13 +56,19 @@ AniGifMaker=function(){
     return true;
   }
   this.mkSpinnerImg=function(ctx,i){
-    const num = Math.floor(i/10);
-    return this.canvasWk(ctx,
-      'Working.+..'+num,0);
+      this.canvasWk(ctx,'Working...'+i,0);
+      const w2= $t.dim.w/2, h2= $t.dim.h/2;
+      const ith= i*Math.PI/300, img=new Image();
+      ctx.fillStyle= 'white';
+      ctx.arc( w2, h2, 0, ith, ith+Math.PI/2);
+      ctx.arc( w2, h2, 0, ith+Math.PI, ith+Math.PI * 3/2);
+      ctx.fill();
+      return [img,img.src= ctx.canvas.toDataURL( 'image/png' )][0];
   }
   this.canvasWk= function( ctx, x, i){
       const n= $t.dim.colors.length-1;
       ctx.fillStyle= $t.dim.colors[n];
+      ctx.beginPath();
       ctx.fillRect(0, 0, $t.dim.w, $t.dim.h);
       ctx.fillStyle= $t.dim.colors[i % n];
       ctx.fillText(x, $t.dim.w/2, $t.dim.h/2); 
