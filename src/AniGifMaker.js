@@ -1,4 +1,4 @@
-//1-1-2018 v0.214 non-zero radius
+//1-1-2018 v0.215 30 slice animation
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -56,7 +56,7 @@ AniGifMaker=function(){
   }
   this.mkSpinnerImg=function(ctx,i){
       this.canvasWk(ctx,'Working~~~'+i,0);
-      const ith= i*Math.PI/300, img=new Image();
+      const ith= i*Math.PI/30, img=new Image();
       ctx.fillStyle= 'white';
       [0, Math.PI].map( function(x) {
         ctx.beginPath();
