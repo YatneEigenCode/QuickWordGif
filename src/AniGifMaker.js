@@ -1,4 +1,4 @@
-//1-1-2018 v0.213 closePath
+//1-1-2018 v0.214 non-zero radius
 AniGifMaker=function(){
   this.dim= {w:360, h:160, d:1200, sep:'\n'}  //d in seconds
   this.dim.colors= ['blue','black','red','#EEEEDD'];
@@ -56,13 +56,12 @@ AniGifMaker=function(){
   }
   this.mkSpinnerImg=function(ctx,i){
       this.canvasWk(ctx,'Working~~~'+i,0);
-      const w2= $t.dim.w/2, h2= $t.dim.h/2;
       const ith= i*Math.PI/300, img=new Image();
       ctx.fillStyle= 'white';
       [0, Math.PI].map( function(x) {
         ctx.beginPath();
-        ctx.moveTo( w2, h2 );
-        ctx.arc( w2, h2, 0, x+ith, x + ith+Math.PI/2);
+        ctx.moveTo( 0, 0 );
+        ctx.arc( 0, 0, $t.dim.w+$t.dim.h, x+ith, x + ith+Math.PI/2);
         ctx.closePath()
         ctx.fill();
       });
