@@ -8,3 +8,7 @@ https://yatneeigencode.github.io/QuickWordGif/demo/quickwordgifdemo.html
 
 Use the library https://github.com/sole/Animated_GIF with input images built using HTML canvas element. 
 
+On smart phones, urls may not auto link. The following link is provided for convenience.
+<a href="https://yatneeigencode.github.io/QuickWordGif/demo/quickwordgifdemo.html">
+  https://yatneeigencode.github.io/QuickWordGif/demo/quickwordgifdemo.html
+</a>
